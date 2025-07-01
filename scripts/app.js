@@ -14,6 +14,11 @@ const emailModalWrapper = document.querySelector(".email-modal__wrapper");
 const emailText = document.querySelector(".email__text");
 const cpEmailBtn = document.querySelector(".email__btn-cp");
 
+document.documentElement.style.setProperty(
+  "--vh",
+  `${window.innerHeight * 0.01}px`
+);
+
 handleMenuBtns = (element) => {
   if (element.target.classList.contains("menu-item")) {
     topMenuItems.forEach((item) => {
