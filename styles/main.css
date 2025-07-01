@@ -248,7 +248,6 @@ body {
   height: 20px;
   width: 20px;
 }
-.email-cp__tag{}
 
 
 .email__text{
@@ -315,6 +314,7 @@ text-decoration: none;
   margin-top: 32px;
   padding-left: 82px;
   padding-right: 82px;
+  padding-bottom: 32px;
 }
 .content__wrapper{
   display: flex;
