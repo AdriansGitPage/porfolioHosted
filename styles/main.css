@@ -26,6 +26,7 @@ footer, header, hgroup, menu, nav, section {
 body {
   line-height: 1;
   height: calc(var(--vh) * 100);
+  margin-bottom: 52px;
 }
 ol, ul {
   list-style: none;
