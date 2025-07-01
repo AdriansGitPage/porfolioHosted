@@ -76,7 +76,6 @@ body {
   color: var(--textMain);
   background-color: var(--bgMain);
   font-family:'Roboto', sans-serif ;
-  padding: 52px;
 
   user-select: none;
 }
