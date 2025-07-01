@@ -24,7 +24,6 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 body {
-  line-height: 1;
   height: calc(var(--vh, 1vh) * 100);
 }
 ol, ul {
