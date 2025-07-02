@@ -298,6 +298,10 @@ body {
   justify-items: center;
 }
 @media (max-width: 800px) {
+.about__container {
+  margin-top: 32px;
+  padding: 0 22px;
+  }
   .about__intro {
     flex-direction: column;
     align-items: center;
