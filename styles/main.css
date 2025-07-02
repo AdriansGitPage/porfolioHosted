@@ -123,9 +123,8 @@ body {
   justify-content: center;
 }
 .email-modal__body {
-  border-radius: 4px;
-  border: 2px solid var(--linkMain);
-  background: var(--textBoxBg);
+  border-radius: 6px;
+  background: var(--projDescBgHover);
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
@@ -251,8 +250,10 @@ body {
   transition:
     background 0.3s cubic-bezier(0.4,0,0.2,1),
     color 0.3s cubic-bezier(0.4,0,0.2,1),
-    box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow 0.3s cubic-bezier(0.4,0,0.2,1),
+    transform 0.18s cubic-bezier(0.4,0,0.2,1);
 }
+
 .menu-item:hover,
 .menu-item__hl {
   background: linear-gradient(90deg, rgba(195,232,158,0.18) 0%, rgba(166,187,204,0.18) 100%);
@@ -260,6 +261,7 @@ body {
   box-shadow: 0 2px 8px 0 rgba(195,232,158,0.08);
   text-decoration: none;
   cursor: pointer;
+  transform: scale(1.08);
 }
 .menu-item__hl {
   padding-bottom: 4px;
