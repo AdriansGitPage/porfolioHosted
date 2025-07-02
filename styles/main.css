@@ -24,7 +24,12 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 body {
-  height: calc(var(--vh, 1vh) * 100);
+   max-height: 100%;
+  color: var(--textMain);
+  background-color: var(--bgMain);
+  font-family:'Roboto', sans-serif ;
+  padding-top: 52px;
+  user-select: none;
 }
 ol, ul {
   list-style: none;
@@ -69,12 +74,23 @@ table {
   pointer-events: none;
 }
 
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
 /* --------------------------------------------------------- */
 
 body {
   color: var(--textMain);
   background-color: var(--bgMain);
   font-family:'Roboto', sans-serif ;
+  padding-top: 52px;
 
   user-select: none;
 }
@@ -136,8 +152,13 @@ body {
   color: var(--linkMain);
 }
 
-.link-item__link{
+.link-item__link {
   cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+
+.link-item__link:hover {
+  transform: scale(1.12);
 }
 
 .image-gitHub{
@@ -278,18 +299,32 @@ body {
   justify-content: center;
 }
 
-.menu-item{
+.menu-item {
   text-align: center;
-  font-size: 42px;
-  font-weight: 900;
-  padding: 0px;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 4px 16px;
   color: var(--linkMain);
+  border-radius: 8px;
+  background: transparent;
+  transition:
+    background 0.3s cubic-bezier(0.4,0,0.2,1),
+    color 0.3s cubic-bezier(0.4,0,0.2,1),
+    box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
-.menu-item:hover{
+.menu-item:hover,
+.menu-item__hl {
+  background: linear-gradient(90deg, rgba(195,232,158,0.18) 0%, rgba(166,187,204,0.18) 100%);
+  color: var(--headersMain);
+  box-shadow: 0 2px 8px 0 rgba(195,232,158,0.08);
+  text-decoration: none;
   cursor: pointer;
-  text-decoration: underline;
+}
+
+.menu-item__hl {
   padding-bottom: 4px;
+  border-bottom: 4px solid var(--headersMain);
 }
 
 .menu-item p{
@@ -308,7 +343,9 @@ text-decoration: none;
 
 /* ====== content */
 
-.content{}
+.content{
+  max-height: 100vh;
+}
 .content__container{
   margin-top: 32px;
   padding-left: 82px;
@@ -380,8 +417,6 @@ text-decoration: none;
   margin-bottom: 16px;
 }
 
-.text-title__line-a{}
-.text-title__line-b{}
 .text-title__line-c, .text-title__line-d{
   text-align: left;
   margin-top: 24px;
@@ -457,34 +492,37 @@ text-decoration: none;
 }
 
 
-
 .cards-block__card-link{
   position: relative;
   min-width: 280px;
   height: 250px;
 
-  border: 4px solid var(--linkMain);
+  border: 2px solid transparent;
   border-radius: 5px;
+  cursor: pointer;
 }
 
-.cards-block__card-link:hover{
-  border: 4px solid var(--headersMain);
-  cursor: pointer;
+.cards-block__card-link:hover .image-card {
+  transform: scale(1.08);
 }
 
 .card__image-wrapper{
  display: flex;
   align-items: center;
   justify-content: center;
-
+  object-fit: contain;
+  border-radius: 3px;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 .image-card{
   content: url(../res/coming-soon-2579123_640.jpg);
-  object-fit: contain;
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 
 .card__title-card{
@@ -520,6 +558,7 @@ text-decoration: none;
   color: var(--textMain);
   background-color: var(--projDescBg);
 }
+
 
 @media (max-width: 1500px) {
   .work__cards-block{

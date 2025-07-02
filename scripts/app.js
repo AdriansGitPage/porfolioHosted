@@ -34,21 +34,50 @@ const resetView = () => {
 };
 
 const router = (contentName) => {
-  if (contentName == "intro") {
-    resetView();
-    aboutBlock.classList.remove("no-display");
-    return;
-  }
+  resetView;
+  const current = Array.from(sectionBlocks).find(
+    (block) => !block.classList.contains("no-display")
+  );
 
-  if (contentName == "work") {
-    resetView();
-    workBlock.classList.remove("no-display");
-    return;
+  let nextBlock = null;
+  if (contentName == "intro") nextBlock = aboutBlock;
+  if (contentName == "work") nextBlock = workBlock;
+
+  if (current && nextBlock && current !== nextBlock) {
+    current.classList.add("fade-out");
+    setTimeout(() => {
+      current.classList.add("no-display");
+      current.classList.remove("fade-out");
+      nextBlock.classList.remove("no-display");
+      nextBlock.classList.add("fade-in");
+      setTimeout(() => {
+        nextBlock.classList.remove("fade-in");
+      }, 200);
+    }, 200);
+  } else if (nextBlock && current !== nextBlock) {
+    nextBlock.classList.remove("no-display");
+    nextBlock.classList.add("fade-in");
+    setTimeout(() => {
+      nextBlock.classList.remove("fade-in");
+    }, 200);
   }
 };
 
 const showHideModal = () => {
-  emailModalContainer.classList.toggle("no-display");
+  if (emailModalContainer.classList.contains("no-display")) {
+    emailModalContainer.classList.remove("no-display", "fade-out");
+    emailModalContainer.classList.add("fade-in");
+    setTimeout(() => {
+      emailModalContainer.classList.remove("fade-in");
+    }, 200);
+  } else {
+    emailModalContainer.classList.remove("fade-in");
+    emailModalContainer.classList.add("fade-out");
+    setTimeout(() => {
+      emailModalContainer.classList.add("no-display");
+      emailModalContainer.classList.remove("fade-out");
+    }, 100);
+  }
 };
 
 emailModalContainer.addEventListener("click", (e) => {
@@ -66,9 +95,8 @@ hideEmailBtn.addEventListener("click", (e) => {
 });
 
 const copyEmail = () => {
-  emailText.innerHTML;
   navigator.clipboard
-    .writeText(emailText.innerHTML)
+    .writeText(emailText.textContent.trim())
     .then(() => console.log("Email copied!"))
     .catch((err) => console.log("Copy failed: " + err));
 };
